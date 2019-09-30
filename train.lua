@@ -140,7 +140,12 @@ function train()
    -- this saves lots of disk space
    --model:clearState()
    saveDataParallel(paths.concat(opt.save, 'model_' .. epoch .. '.t7'), model) -- defined in util.lua
+   
    torch.save(paths.concat(opt.save, 'optimState_' .. epoch .. '.t7'), optimState)
+   m = torch.load('optimState_' .. epoch .. '.t7')
+   m = m:float()
+   torch.save('convert.cpu.t7',m) 
+
 end -- of train()
 -------------------------------------------------------------------------------------------
 -- GPU inputs (preallocate)

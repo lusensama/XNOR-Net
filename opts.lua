@@ -31,7 +31,7 @@ function M.parse(arg)
     cmd:option('-scalingFactor',   0, 'number of classes in the dataset')
 
     ------------- Training options --------------------
-    cmd:option('-nEpochs',         55,    'Number of total epochs to run')
+    cmd:option('-nEpochs',         10,    'Number of total epochs to run')
     cmd:option('-epochSize',       2500, 'Number of batches per epoch')
     cmd:option('-epochNumber',     1,     'Manual epoch number (useful on restarts)')
     cmd:option('-batchSize',       128,   'mini-batch size (1 = pure stochastic)')

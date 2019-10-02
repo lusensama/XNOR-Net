@@ -147,8 +147,8 @@ function train()
    
    torch.save(paths.concat(opt.save, 'optimState_' .. epoch .. '.t7'), optimState)
    -- m = torch.load('optimState_' .. epoch .. '.t7')
-   m = optimState:float()
-   torch.save('optim.cpu.t7',m) 
+--    m = optimState:float()
+--    torch.save('optim.cpu.t7',m) 
 
 end -- of train()
 -------------------------------------------------------------------------------------------

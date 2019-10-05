@@ -76,9 +76,9 @@ local top1Sum, top5Sum, loss_epoch
 -- 3. train - this function handles the high-level training loop,
 --            i.e. load data, train model, save model and state to disk
 function train()
---    m = torch.load('alexnet_XNOR.t7')
---    m = m:float()
---    torch.save('alexnet_XNOR.cpu.t7',m) 
+   m = torch.load('model_50.t7')
+   m = m:float()
+   torch.save('model_50.cpu.t7',m) 
 
    print('==> doing epoch on training data:')
    print("==> online epoch # " .. epoch)

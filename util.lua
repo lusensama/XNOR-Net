@@ -132,6 +132,41 @@ function clampConvParms(convNodes)
 end
 
 
+function no_bias_rand_init(layer)
+  local tn = torch.type(layer)
+  if tn == "cudnn.SpatialConvolution" then
+    local c  = math.sqrt(2.0 / (layer.kH * layer.kW * layer.nInputPlane));
+    layer.weight:copy(torch.randn(layer.weight:size()) * c)
+--     layer.bias:fill(0)
+  elseif tn == "nn.SpatialConvolution" then
+    local c  = math.sqrt(2.0 / (layer.kH * layer.kW * layer.nInputPlane));
+    layer.weight:copy(torch.randn(layer.weight:size()) * c)
+--     layer.bias:fill(0)
+  elseif tn == "nn.BinarySpatialConvolution" then
+    local c  = math.sqrt(2.0 / (layer.kH * layer.kW * layer.nInputPlane));
+    layer.weight:copy(torch.randn(layer.weight:size()) * c)
+--     layer.bias:fill(0)
+  elseif tn == "nn.SpatialConvolutionMM" then
+    local c  = math.sqrt(2.0 / (layer.kH * layer.kW * layer.nInputPlane));
+    layer.weight:copy(torch.randn(layer.weight:size()) * c)
+--     layer.bias:fill(0)
+  elseif tn == "cudnn.VolumetricConvolution" then
+    local c  = math.sqrt(2.0 / (layer.kH * layer.kW * layer.nInputPlane));
+    layer.weight:copy(torch.randn(layer.weight:size()) * c)
+--     layer.bias:fill(0)
+  elseif tn == "nn.Linear" then
+    local c =  math.sqrt(2.0 / layer.weight:size(2));
+    layer.weight:copy(torch.randn(layer.weight:size()) * c)
+    layer.bias:fill(0)
+  elseif tn == "nn.SpatialBachNormalization" then
+    layer.weight:fill(1)
+    layer.bias:fill(0)
+  elseif tn == "cudnn.SpatialBachNormalization" then
+    layer.weight:fill(1)
+    layer.bias:fill(0)
+  end
+end
+
 
 function rand_initialize(layer)
   local tn = torch.type(layer)

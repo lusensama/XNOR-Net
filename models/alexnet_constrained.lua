@@ -29,8 +29,8 @@ local features = nn.Sequential()
    features:add(nn.SpatialDropout(opt.dropout))           
    features:add(ContConvolution(4096,4096,1,1))           
    features:add(nn.SpatialDropout(opt.dropout))            -- regularize?
-   features:add(cudnn.SpatialConvolution(4096, nClasses,1,1))
-   features:add(cudnn.noBias())                           -- no bias
+   features:add(cudnn.SpatialConvolution(4096, nClasses,1,1):noBias())
+--    features:add(cudnn.noBias())                           -- no bias
    features:add(nn.View(nClasses))
    features:add(nn.LogSoftMax())
  

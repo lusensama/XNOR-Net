@@ -2,8 +2,9 @@ function createModel()
    require 'cudnn'
    local function ContConvolution(nInputPlane, nOutputPlane, kW, kH, dW, dH, padW, padH)
          local C= nn.Sequential()
-          C:add(cudnn.SpatialConvolution(nInputPlane, nOutputPlane, kW, kH, dW, dH, padW, padH))   
-          C:add(cudnn.noBias())                                     -- no bias
+          C:add(cudnn.SpatialConvolution(nInputPlane, nOutputPlane, kW, kH, dW, dH, padW, padH):noBias())   
+          
+--           C:add(cudnn.noBias())                                     -- no bias
          --  C:add(nn.SpatialBatchNormalization(nOutputPlane,1e-3)) -- dropout
           C:add(cudnn.ReLU(true))
           return C

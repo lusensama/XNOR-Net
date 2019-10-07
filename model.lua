@@ -30,7 +30,7 @@ else
    model = createModel(opt.nGPU) -- for the model creation code, check the models/ folder
    --Initializing the parameters 
    if opt.netType == 'alexnet_constrained' then
-      modle:apply(no_bias_rand_init)
+      model:apply(no_bias_rand_init)
    else
       model:apply(rand_initialize)
    end

@@ -10,7 +10,7 @@ function createModel()
           return C
    end
    local function AveragePooling(kW, kH, dW, dH, padW, padH)
-    return nn.SpatialAveragePooling(kW, kH, dW, dH, padW, padH)
+    return nn.SpatialMaxPooling(kW, kH, dW, dH, padW, padH)
    end
 
 local features = nn.Sequential()

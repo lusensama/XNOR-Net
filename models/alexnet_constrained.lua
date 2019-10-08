@@ -4,7 +4,7 @@ function createModel()
    local function ContConvolution(nInputPlane, nOutputPlane, kW, kH, dW, dH, padW, padH)
          local C= nn.Sequential()
           C:add(cudnn.SpatialConvolution(nInputPlane, nOutputPlane, kW, kH, dW, dH, padW, padH))   
-          C:add(nn.SpatialBatchNormalization(nOutputPlane,1e-3))
+--           C:add(nn.SpatialBatchNormalization(nOutputPlane,1e-3))
           C:add(cudnn.ReLU(true))
           return C
    end
